@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>aganalytics-HLSservice-demo</title>
+<title>Ag-Analytics® - HLS Service </title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,16 +13116,17 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Ag-Analytics-Harmonised-Landsat-Sentinel-API-Demo">Ag-Analytics-Harmonised Landsat Sentinel API-Demo<a class="anchor-link" href="#Ag-Analytics-Harmonised-Landsat-Sentinel-API-Demo">&#182;</a></h1>
+<h1 id="Ag-Analytics-Harmonised-Landsat-Sentinel-API-Demo">Ag-Analytics® - Harmonized Landsat-Sentinel Service <a class="anchor-link" href="#Ag-Analytics-Harmonised-Landsat-Sentinel-API-Demo"></a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>The Harmonized Landsat and Sentinel-2 (HLS) is a NASA initiative to produce a Virtual Constellation (VC) of surface reflectance (SR) data from the Operational Land Imager (OLI) and MultiSpectral Instrument (MSI) onboard the Landsat 8 and Sentinel-2 remote sensing satellites, respectively. The data from these satellites creates unprecedented opportunities for timely and accurate observation of Earth status and dynamics at moderate (&lt;30 m) spatial resolution every 2-3 days.</p>
-<p><br>The Ag-Analytics provides the service which a user can provide a polygon in specific formats in additional with more customized options to retrieve the dynamics of their land at various times for Landsat from 2013 and Sentinel-2 from 2015 calendar years. Additionally, this service also provides information on cloud cover, statistics, Normalized Difference Vegetation Index in addition to MSI bands information.</p>
-<p><br></p>
+<p><br>The Ag-Analytics® Harmonized Landsat-Sentinel Service (HLS) API provides the service in which a user can provide an area-of-interest (AOI) with additional customized options to retrieve the dynamics of their land at various times from the Landsat-8 and Sentinel-2 satellites. This service provides information on cloud cover, statistics, and Normalized Difference Vegetation Index in addition to MSI bands information.
+<br><br>
+The Harmonized Landsat-Sentinel (HLS) Project is a NASA initiative to produce a Virtual Constellation (VC) of surface reflectance (SR) data from the Operational Land Imager (OLI) and MultiSpectral Instrument (MSI) onboard the Landsat-8 and Sentinel-2 remote sensing satellites, respectively. The data from these satellites creates unprecedented opportunities for timely and accurate observation of Earth status and dynamics at moderate (<30 m) spatial resolution every 2-3 days.</p>
+
 <p><br> Experience the usage of this service on Ag-Analytics website using below link
 <br><a href="https://ag-analytics.portal.azure-api.net/docs/services/harmonized-landsat-sentinel-service/operations/hls-service">https://ag-analytics.portal.azure-api.net/docs/services/harmonized-landsat-sentinel-service/operations/hls-service</a></p>
 
@@ -13194,7 +13195,7 @@ IPython.notebook.set_autosave_interval(0)
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="Request-parameters-details">Request parameters details<a class="anchor-link" href="#Request-parameters-details">&#182;</a></h6><p>Request URL: <a href="https://aganalyticsapimanagementservice.azure-api.net/hls/detect_and_clip_tiles">https://aganalyticsapimanagementservice.azure-api.net/hls/detect_and_clip_tiles</a></p>
+<h6 id="Request-parameters-details">Request parameters details<a class="anchor-link" href="#Request-parameters-details">&#182;</a></h6><p>Request URL: <a href="https://ag-analytics.azure-api.net/hls-service/">https://ag-analytics.azure-api.net/hls-service/</a></p>
 <p>1) aoi (geometry, file/text, required): The structure of the geometry can be one of the following.
 <br>
 i.    JSON geometry objects returned by the arcgis rest api, (file/text) 
@@ -13202,8 +13203,7 @@ ii.   GEOJSON (file/text)
 iii.  Shapefile (file)
 iv.   Raster of tiff extension (file)</p>
 <p>2) Band (Spectral band name, list, required): Provide the list of HLS Spectral band names to retrieve for given aoi<br>
-•   Currently Supporting: Red, Green, Blue, NDVI, Coastal Aerosol, NIR</p>
-<p>3) satellite (Type of satellite, text, optional):<br>  Landsat or Sentinel. Default (Landsat)</p>
+
 <p>4) resolution (cellsize in meters, float, optional):<br> Default (0.0001)</p>
 <p>5) Startdate (Date, mm/dd/yyyy, optional): Enter the starting date to capture the details from Landsat/Sentinel-2<br>
 •   Year in Startdate for Landsat should start from 2013 <br>
@@ -13265,7 +13265,7 @@ iv.   Raster of tiff extension (file)</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">harmonisedlandsatdata</span><span class="p">(</span><span class="n">values</span><span class="p">,</span><span class="n">headers</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://aganalyticsapimanagementservice.azure-api.net/detect_and_clip_tiles&quot;</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://ag-analytics.azure-api.net/hls-service/&quot;</span>
         
      
         <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>

@@ -73,7 +73,7 @@ To take the spatial and temporal correlation of the images into consideration, o
 
 ## API Specifications
 
-##### API URL:  [**Here**](https://ag-analytics.portal.azure-api.net/docs/services/harmonized-landsat-sentinelservice/operations/hls-service)
+##### API URL:  [**Here**](https://ag-analytics.portal.azure-api.net/docs/services/harmonized-landsat-sentinel-service/operations/hls-service)
 
 ##### Header Parameters
 Execute Type: POST

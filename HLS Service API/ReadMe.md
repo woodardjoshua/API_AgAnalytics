@@ -93,8 +93,8 @@ content-type: &quot;application/x-www-form-urlencoded&quot;
 | satellite | text | No | Landsat | Landsat, Sentinel | If set to both Landsat, Sentinel then the result raster will be the mosaic of both satellites for the given dates |
 | showlatest | Int, boolean | No | 1 | - | If startdate or enddate is not given, shows the latest available tile. |
 | filter | Int, boolean | No | 0 | 0, 1 | If set to 1, returns the response which is cloud-free after mosaic. |
-|  qafilter  | Int, boolean | No | 0 | 0, 1 | If set to 1, continues to filter tiles until the invalid pixels are \&lt; **qacloudperc** |
-| qacloudperc | float | No | 100 | 0-100 | This parameter comes to action with **qafilter**. If **qafilter** parameter is 1, then filters the tiles until the invalid pixels in those are \&lt;   **qacloudperc** |
+|  qafilter  | Int, boolean | No | 0 | 0, 1 | If set to 1, continues to filter tiles until the invalid pixels are < **qacloudperc** |
+| qacloudperc | float | No | 100 | 0-100 | This parameter comes to action with **qafilter**. If **qafilter** parameter is 1, then filters the tiles until the invalid pixels in those are <   **qacloudperc** |
 | displaynormalvalues | float | No | 2000 | - | This parameter is used to normalize the band values for display purposes. Used for bands like RGB, AGR, etc. |
 | legendtype | text | No | Relative | Relative, Absolute | Legend type of display ranges of resulting response. |
 | resolution | float | No | 0.0001 | - | Cellsize in meters. |
@@ -227,19 +227,19 @@ _Request Examples – form-data and urlencoded_
 
 ##### form-data
 ##### application/json
-     ```{
-        Band: &quot;[&#39;NDVI&#39;]&quot;
-        Enddate: &quot;3/8/2019&quot;
-        Startdate: &quot;3/2/2019&quot;
-        aoi: &quot;{&quot;type&quot;:&quot;Feature&quot;,&quot;geometry&quot;:{&quot;type&quot;:&quot;Polygon&quot;,&quot;coordinates&quot;:[[[-93.511545,42.071053],[93.511565,42.074566],[-93.50667,42.074588],[-93.501908,42.074559],[-93.501936,42.071045],[-
-        93.511545,42.071053]]]},&quot;properties&quot;:{&quot;OBJECTID&quot;:3350330,&quot;CALCACRES&quot;:77.09999847,&quot;CALCACRES2&quot;:n
-        ull},&quot;id&quot;:3350330}&quot;
-        legendtype: &quot;Relative&quot;
-        satellite: &quot;Landsat&quot;
-        }```
+      { 
+     Band: "['NDVI']" 
+     Enddate: "3/8/2019" 
+     Startdate: "3/2/2019" 
+     aoi: "{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-93.511545,42.071053],[93.511565,42.074566],[-93.50667,42.074588],[-93.501908,42.074559],[-93.501936,42.071045],[-
+    93.511545,42.071053]]]},"properties":{"OBJECTID":3350330,"CALCACRES":77.09999847,"CALCACRES2":null},"id":3350330}" 
+    legendtype: "Relative" 
+    satellite: "Landsat" 
+    } 
+
 
 ##### application/x-www-form-urlencoded
-        ```aoi=%7B%22type%22%3A%22Feature%22%2C%22geometry%22%3A%7B%22type%22%3A%22Polygon%22%2C%22coordinates%22%3A%5B%5B%5B-101.02684%2C38.598114%5D%2C%5B-101.026842%2C38.597962%5D%2C%5B-101.026956%2C38.59093%5D%2C%5B-101.028768%2C38.590943%5D%2C%5B-101.029234%2C38.590946%5D%2C%5B-101.035523%2C38.590991%5D%2C%5B-101.035526%2C38.590991%5D%2C%5B-101.035564%2C38.590991%5D%2C%5B-101.035576%2C38.590991%5D%2C%5B-101.035595%2C38.590991%5D%2C%5B-101.035956%2C38.590994%5D%2C%5B-101.035974%2C38.591099%5D%2C%5B-101.035957%2C38.594349%5D%2C%5B-101.036017%2C38.598193%5D%2C%5B-101.035203%2C38.598193%5D%2C%5B-101.033665%2C38.598182%5D%2C%5B-101.031726%2C38.598158%5D%2C%5B-101.02684%2C38.598114%5D%5D%5D%7D%2C%22properties%22%3A%7B%22OBJECTID%22%3A8091992%2C%22CALCACRES%22%3A156.1000061%2C%22CALCACRES2%22%3Anull%7D%2C%22id%22%3A8091992%7D&amp;satellite=Landsat%2CSentinel&amp;Band=%5B&#39;NDVI&#39;%5D&amp;filter=1&amp;interpolate=1&amp;showlatest=1&amp;resolution=0.0001&amp;statistics=1&amp;Startdate=9%2F26%2F2019&amp;Enddate=10%2F2%2F2019&amp;legendtype=Relative```
+        aoi=%7B%22type%22%3A%22Feature%22%2C%22geometry%22%3A%7B%22type%22%3A%22Polygon%22%2C%22coordinates%22%3A%5B%5B%5B-101.02684%2C38.598114%5D%2C%5B-101.026842%2C38.597962%5D%2C%5B-101.026956%2C38.59093%5D%2C%5B-101.028768%2C38.590943%5D%2C%5B-101.029234%2C38.590946%5D%2C%5B-101.035523%2C38.590991%5D%2C%5B-101.035526%2C38.590991%5D%2C%5B-101.035564%2C38.590991%5D%2C%5B-101.035576%2C38.590991%5D%2C%5B-101.035595%2C38.590991%5D%2C%5B-101.035956%2C38.590994%5D%2C%5B-101.035974%2C38.591099%5D%2C%5B-101.035957%2C38.594349%5D%2C%5B-101.036017%2C38.598193%5D%2C%5B-101.035203%2C38.598193%5D%2C%5B-101.033665%2C38.598182%5D%2C%5B-101.031726%2C38.598158%5D%2C%5B-101.02684%2C38.598114%5D%5D%5D%7D%2C%22properties%22%3A%7B%22OBJECTID%22%3A8091992%2C%22CALCACRES%22%3A156.1000061%2C%22CALCACRES2%22%3Anull%7D%2C%22id%22%3A8091992%7D&amp;satellite=Landsat%2CSentinel&amp;Band=%5B&#39;NDVI&#39;%5D&amp;filter=1&amp;interpolate=1&amp;showlatest=1&amp;resolution=0.0001&amp;statistics=1&amp;Startdate=9%2F26%2F2019&amp;Enddate=10%2F2%2F2019&amp;legendtype=Relative
 
 
 
@@ -347,7 +347,6 @@ _Response Examples – JSON and XML_
 
 ```
 
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 ##### XML
 

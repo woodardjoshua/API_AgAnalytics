@@ -2,7 +2,7 @@
 ## Harmonized Landsat-Sentinel Service
 
 _API Documentation_
-_2019_
+_2020_
 
 ## Service Overview
 

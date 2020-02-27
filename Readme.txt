@@ -3,7 +3,7 @@ Overview of Jupyternotebooks:
 Requirements:
 -Install gdal, fiona, shapely, and geopandas from https://www.lfd.uci.edu/~gohlke/pythonlibs/
 -Install all other dependences including pandas, descartes, requests, jupyter, and any others.
--Obtain an API key (free) from https://ag-analytics.org/ApiDeveloper
+-Obtain an API key for those that require it via https://analytics.ag/Session/SignInToAPIPayment.
 
 In all the below four apis followings steps are followed in jupyter notebooks
                i)CLU
@@ -31,7 +31,7 @@ In all the below four apis followings steps are followed in jupyter notebooks
         2) call the repective api's
         3) the reponse is converetd to respective tabular formats or plotted like graphs
 
-
+Steps for AI-based APIs' Jupyter Notebooks may vary between the two sets of steps above.
 
 Steps:
 
@@ -66,7 +66,7 @@ Contents of the folder:
 
   
 Steps to Run Jupyternotebooks:
-            Please follow the steps in the Jupyternotebook_steps.docx
+            Please follow the steps in the Jupyternotebook_steps.docx.
 
 
 

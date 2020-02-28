@@ -71,7 +71,7 @@ The response from the POST request.
 
 The GET request to retrieve the image using the 'FileName' from the POST response.
 
-    http://127.0.0.1:5000/agflask/api/v1.0/dem_service/download_dem?FileName=result_raster_dem_epsg4326_resolution_9.2592593e-05_33014.tif   
+    https://ag-analytics.azure-api.net/dem-service?FileName=result_raster_dem_epsg4326_resolution_9.2592593e-05_33014.tif   
     
 The image returned by the GET request.
 

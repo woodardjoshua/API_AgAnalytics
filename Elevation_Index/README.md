@@ -67,7 +67,7 @@ The png image returned in the POST response.
 
 The GET request to retrieve the image using the 'FileName' from the POST response.
 
-    https://agflaskdev.eastus2.cloudapp.azure.com/flask_api/api/v1.0/elevation_index_service/elevation_index?filenames=raster_Slope_46283.tif
+    https://ag-analytics.azure-api.net/elevation-index?filenames=raster_Slope_46283.tif
 
 The image returned by the GET request.
 

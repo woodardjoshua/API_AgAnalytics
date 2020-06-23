@@ -63,7 +63,7 @@ The response from the POST request.
 
 The png image returned in the POST response.
 
-![Slope Example](Documentation/images/slope_example.png)
+![Slope Example](Resources/images/slope_example.png)
 
 The GET request to retrieve the image using the 'FileName' from the POST response.
 
@@ -71,7 +71,7 @@ The GET request to retrieve the image using the 'FileName' from the POST respons
 
 The image returned by the GET request.
 
-![Slope GTIFF Example](Documentation/images/slope_gtiff_example.png)
+![Slope GTIFF Example](Resources/images/slope_gtiff_example.png)
 
 ## Request Options
 
@@ -90,33 +90,33 @@ The image returned by the GET request.
 
 The relative elevation for a field is derived by calculating the z-score of every point in the field. This assigns a value to each point that says how far away from the mean it is. Unsurprisingly, this results in an identical image as the raw elevation data, however, the values are now relative to the rest of the field. Rather than using raw elevation data, which can be confounded by geospatial location (i.e., fields in Colorado are at a higher elevation than fields in Iowa) relative elevation is normalized by the mean elevation on the field.
 
-![Relative Elevation](Documentation/images/relative_elevation.png)
+![Relative Elevation](Resources/images/relative_elevation.png)
 
 ### Slope
 
 The maximum slope of each point on the field is calculated by taking the gradient of the elevation for each point. This is accomplished with a central finite difference scheme to compute the x and y derivatives at every point. 
 
-![Slope Caluculations](Documentation/images/slope_calcs.png)
+![Slope Calculations](Resources/images/slope_calcs.png)
 
 By computing the maximum slope at every point, it is possible to tell whether a given point may be a place where water can pool or whether water will run off of it. One thing to note is that because the slope operation requires points beyond the point of interest, the raster was expanded by a single pixel that contained the same value as the edge pixels. These are called “ghost points” and ensure that the finite difference operation can be completed at every point in the raster. The method used here is edge replication, however, linear interpolation can also be used to generate ghost points.
 
-![Slope](Documentation/images/slope.png)
+![Slope](Resources/images/slope.png)
 
 ### Topographic Position Index (TPI)
 
 The topographic position index or TPI is a method of measuring the elevation of a given point with respect to a surrounding neighborhood of surrounding points. This index can be used to determine local extrema, or points of maximum and minimum elevation on a sub-field level. The index can be used to infer wet or dry areas of the field based on where water might pool or run off. The challenge with TPI is that the size of the search window or neighborhood is variable. The current implementation uses a ring search to calculate TPI, where the user can specify an outer bounding box and an inner bounding box between which the computation is done. 
 
-![TPI Window](Documentation/images/tpi_window.png)
+![TPI Window](Resources/images/tpi_window.png)
 
 For example in the diagram above, the center orange point is the point of interest and the blue area is the search neighborhood. In this case, the outer ring would have a dimension of 7x7, and the inner ring would have a dimension of 5x5. The ring dimensions are always odd numbers to ensure that the center pixel is actually in the center. Reference [Andrew D. Weiss, The Nature Conservancy].
 
-![TPI](Documentation/images/tpi.png)
+![TPI](Resources/images/tpi.png)
 
 ### Terrain Ruggedness Index (TRI)
 
 The TRI was developed by Riley et. al. in 1999 and is a means of calculating how rough a given area is in terms of local hilliness and steepness of gradients. This is done by constructing a window around each point in the raster and computing the mean of the squared differences of each window point and the central value. The TRI is then the square root of this mean value. The original paper specified a window of 8 pixels, however, the Elevation Index API leaves it up to the user.
 
-![TRI Window](Documentation/images/tri_window.png)
+![TRI Window](Resources/images/tri_window.png)
 
-![TRI](Documentation/images/tri.png)
+![TRI](Resources/images/tri.png)
 

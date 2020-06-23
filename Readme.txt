@@ -12,7 +12,7 @@ In all the below four apis followings steps are followed in jupyter notebooks
                iv) SSURGO Soils
 
         1) create a request parameters
-        2) call the repective api's
+        2) call the respective api's
         3) if the response is geojson, 
                      directly converting the geojson response to shapefiles by using external api
                      
@@ -28,7 +28,7 @@ In all the below four apis followings steps are followed in jupyter notebooks
                viii)emodis  
                
         1) create a request parameters
-        2) call the repective api's
+        2) call the respective api's
         3) the reponse is converetd to respective tabular formats or plotted like graphs
 
 Steps for AI-based APIs' Jupyter Notebooks may vary between the two sets of steps above.

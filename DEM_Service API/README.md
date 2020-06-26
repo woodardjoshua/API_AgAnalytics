@@ -136,5 +136,5 @@ The table below shows what the output resolution of the result will be given the
 
 ## Process Flow (for those who are curious)
 
-![DEM Flow](Documentation/images/DEM_Service_Flow.png)
+![DEM Flow](Resources/images/DEM_Service_Flow.png)
 

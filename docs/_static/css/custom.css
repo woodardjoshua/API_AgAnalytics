@@ -1,0 +1,30 @@
+/* This file intentionally left blank. */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+/* * { font-family: 'Open Sans', sans-serif !important; } */
+
+#module-Varieties\.variety_retrieval > p, #module-CDL_Service_RangeRead\.CDL_Service_API > p, #module-DEM_Service\.Processing.dem_service > p,
+#module-Elevation_Index_API\.elevation_index_service > p, #module-POLARIS_Service\.polaris_service > p,#module-CDL_Service_RangeRead\.CDL_Service_API > .simple,
+#module-Application_Service\.ChemParser\.chemical_retriever > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
+#module-Application_Service\.application_service > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
+#module-Boundary_Service\.Boundary_Service_API > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
+#module-AdaptApi\.adapt_response_aggregator\.aggregate_adapt_response > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
+#module-AdaptApi.Adapt_External_API\.adapt_external_api_service > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
+
+
+.py.class, .py.function {
+	border: 2px solid #dadada;
+    padding: 10px;
+    overflow-wrap: anywhere;
+}
+
+body{
+	font-family: 'Open Sans', Helvetica, sans-serif !important;
+}
+
+/*
+#searchbox{
+	position: sticky;
+  	top: 0;
+}
+*/

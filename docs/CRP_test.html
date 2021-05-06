@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRP &#8212; API 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CropAI" href="CropAI.html" />
+    <link rel="prev" title="Cover Crop" href="CoverCrop.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="crp">
+<h1>CRP<a class="headerlink" href="#crp" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<p>Conservation Reserve Program (CRP) is a land conservation program administered by FSA. In exchange for a yearly rental payment, farmers enrolled in the program agree to remove environmentally sensitive land from agricultural production and plant species that will improve environmental health and quality.The CRP has improved water quality, reduced soil erosion, and increased habitat for endangered and threatened species for the lands enrolled in the program. In our AI projects, the CRP is an important indicator for the land’s value, soil quality, fertility, etc.</p>
+<p>CRP Service is the internal API that takes AOI, product (ex: raster or percent), and spatial specifications (optional) and return the CRP infomation in request product format. If without any spatial specification, the API will standarize the result in WGS 84 spatial reference and resolution at 0.0001 degree.</p>
+<div class="section" id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<p>This API lives in <a class="reference external" href="https://github.com/woodardjoshua/agflask/tree/master/CRP_Service">agflask\AgAI\Projects\Tillage_Model</a>. The <a class="reference external" href="https://github.com/woodardjoshua/agflask/blob/master/CRP_Service/readme.md">readme</a> contains additional information.</p>
+</div>
+<div class="section" id="endpoint">
+<h3>Endpoint<a class="headerlink" href="#endpoint" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">https://agflaskdev.eastus2.cloudapp.azure.com/flask_api/api/v1.0/CRP_Service_API/crp</span></code></p>
+</div>
+<div class="section" id="content-type">
+<h3>Content Type<a class="headerlink" href="#content-type" title="Permalink to this headline">¶</a></h3>
+<p>Application Formatted</p>
+</div>
+<div class="section" id="request-parameters">
+<h3>Request Parameters<a class="headerlink" href="#request-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Of the listed parameters, product is required, and either aoi or file is required.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Data Type</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>aoi</p></td>
+<td><p>String</p></td>
+<td><p>WKT of base shape</p></td>
+</tr>
+<tr class="row-odd"><td><p>file</p></td>
+<td><p>GeoTIFF</p></td>
+<td><p>GeoTIFF raster of base shape</p></td>
+</tr>
+<tr class="row-even"><td><p>product</p></td>
+<td><p>String</p></td>
+<td><p>Simplifes the API result. If “percent”, the response is CRP percent only. If ” raster”, the response is CRP percent and a CRP raster download url. (percent or raster)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Projection</p></td>
+<td><p>String</p></td>
+<td><p>Used with product is raster. Output projection of resulting GeoTIFF.</p></td>
+</tr>
+<tr class="row-even"><td><p>Resolution</p></td>
+<td><p>String</p></td>
+<td><p>Used with product is raster. Output resolution of resulting GeoTIFF.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="request-example">
+<h3>Request Example<a class="headerlink" href="#request-example" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="aoi-file">
+<h4>AOI file<a class="headerlink" href="#aoi-file" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WKT</span> <span class="o">=</span> <span class="s1">&#39;POLYGON ((-85.179 42.74, -85.178588867482233 42.741882324509731, -85.178588867482233 42.742675781062474, -85.1782836915391 42.742675781062474, -85.1782226563505 42.74230956993074, -85.17529296909521 42.74230956993074, -85.17529296909521 42.743530273703243, -85.17529296909521 42.743713379269082, -85.174926757963476 42.743896483935657, -85.174377441265847 42.744079589501496, -85.173400879147209 42.744079589501496, -85.173278808769965 42.747497558265763, -85.174011230134113 42.747497558265763, -85.174011230134113 42.748474121283721, -85.17529296909521 42.748474121283721, -85.175903320082114 42.748291015717882, -85.177490234086974 42.747924804586091, -85.177612304464219 42.7470703128447, -85.1782836915391 42.746704101712965, -85.180725097285347 42.746704101712965, -85.179 42.74))&#39;</span>
+
+<span class="n">test_raster_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span><span class="s1">&#39;raster_CRP_test.tif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="test-raster">
+<h4>Test Raster<a class="headerlink" href="#test-raster" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>value = {&quot;product&quot;: &quot;raster&quot;,
+     &quot;Projection&quot;: “EPSG:4326”,
+     &quot;Resolution&quot;: “0.0001”}
+file = [(&#39;file&#39;, (open(test_raster_path, &#39;rb&#39;)))]
+response = requests.post(API_URL, data=value, files=file).text
+</pre></div>
+</div>
+</div>
+<div class="section" id="wkt">
+<h4>WKT<a class="headerlink" href="#wkt" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>value = {&quot;aoi&quot;: WKT,
+     &quot;product&quot;: &quot;raster&quot;,
+     &quot;Projection&quot;:“EPSG:4326”,
+     &quot;Resolution&quot; : “0.0001”}
+
+response = requests.post(API_URL, data=value).text
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="response-parameters">
+<h3>Response Parameters<a class="headerlink" href="#response-parameters" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Data Type</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CRP_percent</p></td>
+<td><p>String</p></td>
+<td><p>Percentage of the AOI that is CRP_API_test</p></td>
+</tr>
+<tr class="row-odd"><td><p>CRP_raster</p></td>
+<td><p>URL</p></td>
+<td><p>URL to download the raster</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="response-example">
+<h3>Response Example<a class="headerlink" href="#response-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="p">{</span>
+    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">&quot;CRP_percent&quot;</span><span class="p">:</span> <span class="mf">0.9423597872372176</span><span class="p">,</span>
+<span class="s2">&quot;CRP_raster&quot;</span><span class="p">:</span> <span class="s2">&quot;https://agflaskdev.eastus2.cloudapp.azure.com/flask_api/api/v1.0/CRP_Service_API/crp?filename=result_crp_raster_proj_4326_res_1e-05_20200528145254845843.tif&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;SUCCEED&quot;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="status-codes">
+<h3>Status Codes<a class="headerlink" href="#status-codes" title="Permalink to this headline">¶</a></h3>
+<p>SUCCEED</p>
+<p>NOT FOUND (AOI does not contain any CRP area)</p>
+<p>FAILURE (see message)</p>
+</div>
+<div class="section" id="test-script">
+<h3>Test Script<a class="headerlink" href="#test-script" title="Permalink to this headline">¶</a></h3>
+<p>The test script is <a class="reference external" href="https://github.com/woodardjoshua/agflask/blob/master/CRP_Service/CRP_API_test.py">CRP_API_test.py</a></p>
+<p>Running Test Script:</p>
+<ol class="arabic simple">
+<li><p>Run <a class="reference external" href="https://github.com/woodardjoshua/agflask/blob/master/myapp.py">myapp</a></p></li>
+<li><p>Run the script. Currently, this step results in FAILURE with a “.NET Framework error” message.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="source-code">
+<h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
+<p>The main script is <a class="reference external" href="https://github.com/woodardjoshua/agflask/blob/master/CRP_Service/CRP_Service_API.py">CRP_Service_API.py</a></p>
+<div class="section" id="script-relationships">
+<h3>Script Relationships<a class="headerlink" href="#script-relationships" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/woodardjoshua/agflask/blob/master/CRP_Service/CRP_Processing.py">CRP_Processing.py</a>- Cotains the core CRP class</p></li>
+<li><p><a class="reference external" href="https://github.com/woodardjoshua/agflask/blob/master/CRP_Service/CRP_config.py">CRP_config.py</a>- Configures CRP servce only</p></li>
+</ul>
+</div>
+<div class="section" id="module-CRP_Service.CRP_Service_API">
+<span id="description"></span><h3>Description<a class="headerlink" href="#module-CRP_Service.CRP_Service_API" title="Permalink to this headline">¶</a></h3>
+<p><strong>CRP_Service_API.py</strong> -
+This API determines the percentage of an AOI in CRP and outputs a raster.</p>
+<dl class="py function">
+<dt id="CRP_Service.CRP_Service_API.process_CRP">
+<code class="sig-prename descclassname">CRP_Service.CRP_Service_API.</code><code class="sig-name descname">process_CRP</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CRP_Service.CRP_Service_API.process_CRP" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="CRP_Service.CRP_Service_API.send_rasters">
+<code class="sig-prename descclassname">CRP_Service.CRP_Service_API.</code><code class="sig-name descname">send_rasters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CRP_Service.CRP_Service_API.send_rasters" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Send full path of .tif</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="background">
+<h3>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="AdaptAggregate.html">ADAPT Aggregate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AdaptExternal.html">ADAPT External</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BoundaryAI.html">BoundaryAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ChemicalRetrieval.html">Chemical Retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CoverCrop.html">Cover Crop</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CRP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#api">API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#endpoint">Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#content-type">Content Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request-parameters">Request Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request-example">Request Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#response-parameters">Response Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#response-example">Response Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status-codes">Status Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-script">Test Script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#source-code">Source Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#script-relationships">Script Relationships</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-CRP_Service.CRP_Service_API">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#background">Background</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CropAI.html">CropAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CroplandDataLayer.html">Cropland Data Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DEM.html">DEM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ElevationIndex.html">Elevation Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eMODIS.html">eMODIS</a></li>
+    <li class="toctree-l1"><a class="reference internal" href="FarmlandSales.html">Farmland Sales API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FederalCropInsurance.html">Federal Crop Insurance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FieldDay.html">Field Day</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GuidanceLines.html">GuidanceLines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HarvestDate.html">Harvest Date</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HLSServiceV3.html">HLS Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LandValue.html">Land Value AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NAIP.html">NAIP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NutrientParser.html">Nutrient Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ObjectID.html">ObjectID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PlantingDate.html">Planting Date</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PolarisSoils.html">Polaris Soils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PrismGDD.html">PRISM GDD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PrismPrecipitation.html">PRISM Precipitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SSURGOSoils.html">SSURGO Soils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TillageAI.html">TillageAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VarietyRetrieval.html">Variety Retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YieldAI.html">YieldAI</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Ag-Analytics.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/CRP.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

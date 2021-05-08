@@ -1,30 +1,193 @@
 /* This file intentionally left blank. */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@900&family=Heebo:wght@800&family=Jaldi:wght@700&family=Yantramanav:wght@900&display=swap');
 
-/* * { font-family: 'Open Sans', sans-serif !important; } */
+* { font-family: 'Open Sans', sans-serif !important; }
 
 #module-Varieties\.variety_retrieval > p, #module-CDL_Service_RangeRead\.CDL_Service_API > p, #module-DEM_Service\.Processing.dem_service > p,
 #module-Elevation_Index_API\.elevation_index_service > p, #module-POLARIS_Service\.polaris_service > p,#module-CDL_Service_RangeRead\.CDL_Service_API > .simple,
-#module-Application_Service\.ChemParser\.chemical_retriever > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
-#module-Application_Service\.application_service > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
-#module-Boundary_Service\.Boundary_Service_API > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
-#module-AdaptApi\.adapt_response_aggregator\.aggregate_adapt_response > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
-#module-AdaptApi.Adapt_External_API\.adapt_external_api_service > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
+#module-Application_Service\.ChemParser\.chemical_retriever > p { margin: 0;margin-bottom: 20px;padding: 10px;background: #e7f2fa; }
+#module-Application_Service\.application_service > p { margin: 0;margin-bottom: 20px;padding: 10px;background: #e7f2fa; }
+#module-Boundary_Service\.Boundary_Service_API > p { margin: 0;margin-bottom: 20px;padding: 10px;background: #e7f2fa; }
+#module-AdaptApi\.adapt_response_aggregator\.aggregate_adapt_response > p { margin: 0;margin-bottom: 20px;padding: 10px;background: #e7f2fa; }
+#module-AdaptApi.Adapt_External_API\.adapt_external_api_service > p { margin: 0;margin-bottom: 20px;padding: 10px;background: #e7f2fa; }
+#module-AgAI\.Projects\.CoverCrop_Model\.CoverCrop_Forecast\.CoverCrop_Forecast > p { margin: 0;margin-bottom: 20px;padding: 10px;background: #e7f2fa; }
 
+#module-AgAI\.Projects\.Tillage_Model\.Tillage_Forecast_V4\.Tillage_Model_Forecast_V4 > p { margin: 0;margin-bottom: 20px;padding: 10px;background: #e7f2fa; }
+#module-0 > p { border: 2px solid #797979;margin: 0;padding: 10px;background: #efefef; }
+#module-AgAI\.Projects\.CoverCrop_Model\.CoverCrop_Learning_v4\.model\.random_forest_classifier > p { margin: 0;margin-bottom: 20px;padding: 10px;background: #e7f2fa; }
 
-.py.class, .py.function {
+.py.class, .py.function, .py.data {
 	border: 2px solid #dadada;
     padding: 10px;
     overflow-wrap: anywhere;
+    margin-bottom: 20px;
+}
+
+h3{
+	    margin-top: 20px;
 }
 
 body{
 	font-family: 'Open Sans', Helvetica, sans-serif !important;
 }
 
+div.document {
+    width: 1100px;
+}
+
+div.body, .wy-nav-content {
+    min-width: 450px;
+    max-width: 1200px;
+}
+
+.py.class > dd > p, .py.function > dd > p {
+	border-bottom: 1px solid #757575;
+	margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.py.method, .field-list.simple{
+	border-top: 2px solid #ececec;
+    padding: 10px;
+    border-bottom: 2px solid #ececec;
+}
 /*
+#api {
+	border: 2px solid #ececec;
+	padding: 10px;
+}
+*/
+h1 {
+	font-weight: bolder !important;
+	border-bottom: 1px solid #e1e4e5;
+    padding-bottom: 25px;
+	/*color:	#888888;*/
+}
+.wy-side-nav-search {
+background-color: #59a7a9;
+}
+
+.icon-home{
+	color: #59a7a9 !important;
+}
+
+
+.wy-side-nav-search > .icon{
+	font-size: 0%;
+}
+
+.logo{
+	margin-bottom: 20px !important;
+}
+
+.accordpanel {
+   display: none;
+}
+
+.accordactive{
+	-webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+    display: block;
+}
+
+
+   .accordion:hover {
+   background-color: #ccc;
+   }
+
+#collapse,#tillage-data-collection,#process-tillage-data, #random-forest-classifier,#cover-crop-data-prep,#data-prepare-wrapper,#tillage-preprocessing,#cover-crop-forecast-testing,#cover-crop-forecast, #nutrient-summary-processing,#tillage-model-forecast-v4,#tillage-forecast-testscript,#cover-crop-preprocessing,#other-preprocessing-methods,#variety-retrieval,#variety-api-test,#variety-local-testing,#variety-json-test,#ssurgo-service-api,#yield-model-forecast-v3,#polaris-service,#planting-date-forecast,#operation-service,#application-service-api,#nitrogen-parser,#application-api-test-script,#summary-processing,#nutrient-summary-processing-queries,#naip-service-api,#naip-processing,#tile-service,#harvest-day-forecast,#guidance-lines-api,#elevation-index-service,#crp-service-api,#dem-service,#cdl-service-api,#cdl-rr-processing,#cdl-rr-constants,#crop-id-model-forecast,#cover-crop-forecast,#cover-crop-forecast-testing,#preprocessing,#data-prepare-wrapper,#summary-processing,#random-forest-classifier,#cover-crop-data-prep,#chemical-retriever,#chemical-api-test,#chemical-summary-processing,#chemical-summary-processing-queries,#adapt-external-api-service,#boundary-service-database-dict,#boundary-service-api,#aggregate-adapt-response  
+{
+   background-color: #f1f1f1;
+   color: #444;
+   cursor: pointer;
+   padding: 12px;
+   width: 100%;
+   text-align: left;
+   border: none;
+   outline: none;
+   transition: 0.4s;
+   border: 2px solid #e1e4e5;
+}
+
+h4 {
+	margin-bottom: 0px;
+}
+
+.hoverable:hover{
+  background-color: #e2e2e2 !important;
+}
+
+/*
+.sphinxsidebarwrapper {
+	border: 2px solid #ececec;
+}
+*/
+/*
+.py.class > dt, .py.function dt{
+	background-color: #f5fff2;
+}
+
 #searchbox{
 	position: sticky;
   	top: 0;
 }
 */
+
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+
+.rst-footer-buttons{
+	margin-top: 20px;
+}
+
+
+
+
+h1 {
+  font-size: 40px;
+  margin-bottom:	20px;
+}
+
+h1 {
+
+  color: #77b3b5;
+
+  
+}
+.heading--stroke-shadow {
+  color: #f2cee6;
+  text-shadow: -2px 0 #0d1b1e, 0 -2px #0d1b1e, 2px 0 #0d1b1e, 0 2px #0d1b1e, 2px 2px #0d1b1e, -2px -2px #0d1b1e, -2px 2px #0d1b1e, 2px -2px #0d1b1e, 6px 6px #2dc7ff;
+}
+.heading--halftone {
+  position: relative;
+}
+.heading--halftone:after {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAHElEQVQYV2NUVFT8f//+fUYGBgYGMAEDcA5IBQCKJQVmn76DhAAAAABJRU5ErkJggg==") repeat;
+  -webkit-text-stroke-width: 0;
+  -moz-text-stroke-width: 0;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  font-size: 6rem;
+  letter-spacing: 6px;
+  left: calc(50% + 6px);
+  top: calc(50% + 6px);
+  content: "Hello";
+  z-index: -1;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.heading--halftone-color:after {
+  background-color: #2dc7ff;
+}
